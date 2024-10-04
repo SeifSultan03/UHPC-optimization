@@ -1,0 +1,122 @@
+body {
+    background-color: gray;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+img{
+    max-width: 900px;
+    max-height: auto;
+}
+
+  
+#uploadForm {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 1000px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#fileInput {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 3px dashed #ccc;
+    width: 900px;
+    height: 200px;
+    font-size: 16px;
+}
+  
+#buttonContainer button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 170px;
+}
+
+.deleteButton {
+  background-color: #f80202;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 130px;
+}
+
+pre{
+    font-size: 1.5rem;
+}
+
+#graphContainer{
+  display: flex;
+  justify-content: center;
+}
+
+span{
+  color:goldenrod;
+}
+
+#buttonContainer{
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+}
+
+#fileContainer {
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  flex-direction: row;
+  background-color: #f9f9f9;
+}
+
+.file-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+}
+
+.file-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.file-size {
+  color: #666;
+  font-size: 12px;
+}
+
+.filePic{
+  width: 100px;
+  height: 100px;
+}
+
+.deleteButton{
+  margin-top: 5px;
+}

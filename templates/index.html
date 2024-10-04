@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        UHPC optimization
+    </title>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+    <form id="uploadForm">
+        <input type="file" id="fileInput"/>
+
+        <div id="fileContainer">
+          <template id="fileTemplate">
+            <div class="file-display">
+              <img src="/static/file.png" class="filePic">
+              <span class="file-name">file2</span>
+              <span class="file-size">10kb</span>
+              <select class="materialSelect">
+                <option disabled selected>Please Select Material</option>
+                <option value="cement">Cement</option>
+                <option value="silicaFume">Silica Fume</option>
+                <option value="sand">Sand</option>
+                <option value="slag">Slag</option>
+              </select>
+              <button class="deleteButton" type="button">Delete</button>
+            </div>
+          </template>
+          
+        </div>
+        <div id="buttonContainer">
+          <button id="addButton" type="button">Add File</button>
+          <button id="uploadButton" type="button">Upload</button>
+        </div>
+      </form>
+      <div id="graphContainer">
+        <pre id="graphData"></pre>
+        <img id="plotImage">
+      </div>
+    <script src="../static/Events.js"></script>
+</body>
