@@ -17,3 +17,4 @@ soupsieve==2.3.1
 urllib3==1.26.8
 virtualenv==20.13.0
 Werkzeug==2.0.2
+pandas==2.1.1
