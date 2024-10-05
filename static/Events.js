@@ -90,7 +90,7 @@ document.getElementById('uploadButton').addEventListener('mousedown',function(ev
     formData.append('file', fileInput.files[0]);
 
     printFiles()
-    fetch('http://localhost:5000/upload', {
+    fetch('https://uhpc-optimization-997bd0e79934.herokuapp.com/upload', {
         method: 'POST',
         body: files,
       })
