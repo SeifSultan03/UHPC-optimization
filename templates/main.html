@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        UHPC optimization
+    </title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-left">
+          <a href="/main" class="selected">Home</a>
+          <a href="/materials">My Materials</a>
+          <a href="/spreadsheet">Spreadsheet Help</a>
+          <a href="/account">Account</a>
+      </div>
+      <div class="navbar-right">
+          <span class="account-name">username</span>
+          <button class="logout-button" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+    <form id="uploadForm">
+      <h1>Optimization Portal</h1>
+        <input type="file" multiple id="fileInput"/>
+        <div id="fileContainer">
+
+          <template id="fileTemplate">
+            <div class="file-display">
+              <img src="/static/file.png" class="filePic">
+              <span class="file-name">file2</span>
+              <span class="file-size">10kb</span>
+              <select class="materialSelect">
+                <option disabled selected>Please Select Material</option>
+                <option value="cement">Cement</option>
+                <option value="silicaFume">Silica Fume</option>
+                <option value="sand">Sand</option>
+                <option value="slag">Slag</option>
+              </select>
+              <button class="deleteButton" type="button">Delete</button>
+            </div>
+          </template>
+          
+        </div>
+        <div id="buttonContainer">
+          <button id="addButton" type="button">Add File(s)</button>
+          <!--<button id="psdButton" type="button">Show PSD</button>-->
+          <button id="uploadButton" type="button">Optimize PSD</button>
+        </div>
+      </form>
+    <div id="result-container">
+      <div class="left">
+        <div class="dropdown-container">
+          <button class="expand-button">▶ Optimal RMSE</button>
+          <div class="image-container" class="imageContainer">
+            <pre id="rmseData"></pre>
+          </div>
+        </div>
+        <div class="dropdown-container">
+          <button class="expand-button">▶ Optimal weights</button>
+          <div class="image-container" class="imageContainer">
+            <pre id="graphData"></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="dropdown-container">
+          <button class="expand-button">▶ View Optimized PSD</button>
+          <div class="image-container" class="imageContainer">
+            <img src="/static/file.png" class="ExpandableImage">
+          </div>
+        </div>
+        <div class="dropdown-container">
+          <button class="expand-button">▶ View PSD per material</button>
+          <div class="image-container" class="imageContainer">
+              <img src="/static/file.png" class="ExpandableImage">
+          </div>
+        </div>
+      </div>
+
+    </div>
+      <div id="graphContainer">
+        <img id="plotImage">
+        <div id="textContainer">
+            <!--<pre id="rmseData"></pre>
+            <pre id="graphData"></pre>-->
+        </div>
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="../static/common.js"></script>
+    <script src="../static/Events.js"></script>
+</body>

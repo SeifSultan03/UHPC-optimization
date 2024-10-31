@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        UHPC optimization
+    </title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="../static/materials.css">
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-left">
+          <a href="/main">Home</a>
+          <a href="/materials" class="selected">My Materials</a>
+          <a href="/spreadsheet">Spreadsheet Help</a>
+          <a href="/account">Account</a>
+      </div>
+      <div class="navbar-right">
+          <span class="account-name">username</span>
+          <button class="logout-button" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="hidePopup()">&times;</span>
+        <h2 id="material-popup-title">Edit Material</h2>
+        <div class="input_container">
+          <b>Material Name: </b><input type="text" placeholder="Enter Material" value="" id="material-name-input">
+        </div>
+        <div class="input_container">
+          <b>Density (g/cm<sup>3</sup>): </b><input type="text" placeholder="Enter Density" value="" id="material-density-input">
+        </div>
+        <div class="saver-container">
+          <button id="save-button" type="button">Save</button>
+          <button id="cancel-button" type="button" onclick="hidePopup()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="uploadForm">
+      <h1>Manage My Materials</h1>
+        <div id="fileContainer">
+          <template id="material-template">
+            <div class="material-display">
+              <img src="/static/material.png" class="materialPic">
+              <div class="materialData"><span class="file-name">Material: </span><span class="material-name">Concrete</span></div>
+              <div class="materialData"><span class="file-name">Density: </span><span class="material-density">2.5</span> g/cm<sup>3</sup></div>
+              <div class="editorContainer">
+                <button class="editButton" type="button">Edit</button>
+                <button class="deleteButton" type="button">Delete</button>
+              </div>
+            </div>
+          </template>
+            <div class="material-display">
+              <img src="/static/material.png" class="materialPic">
+              <div class="materialData"><span class="file-name">Material: </span><span class="material-name">Concrete</span></div>
+              <div class="materialData"><span class="file-name">Density: </span><span class="material-density">2.5</span> g/cm<sup>3</sup></div>
+              <div class="editorContainer">
+                <button class="editButton" type="button">Edit</button>
+                <button class="deleteButton" type="button">Delete</button>
+              </div>
+            </div>
+          <template id="add-template">
+            <div class="file-display add-new">
+              <button id="addButton" type="button">+</button>
+            </div>
+          </template>
+        </div>
+      </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="../static/common.js"></script>
+    <script src="../static/materials.js"></script>
+</body>
