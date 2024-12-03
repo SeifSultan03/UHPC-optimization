@@ -69,18 +69,56 @@ function register () {
             }
           }
         },
+        sheet_name:"Sheet2",
+        tutorial_level:0,
         materials: {
           Cement: {
-            Density: 3.15
+            Density: 3.15,
+            Bounds:{
+              lower:[-1],
+              upper:[-1]
+            },
+            Type:"OPC"
           },
           Slag: {
-            Density: 2.85
+            Density: 2.85,
+            Bounds:{
+              lower:[0.2],
+              upper:[-1]
+            },
+            Type:"SCM"
           },
           Sand: {
-            Density: 2.6
+            Density: 2.6,
+            Bounds:{
+              lower:[1],
+              upper:[-1]
+            },
+            Type:"FA"
           },
           "Silica Fume": {
-            Density: 2.2
+            Density: 2.2,
+            Bounds:{
+              lower:[0],
+              upper:[0.2]
+            },
+            Type:"SCM"
+          },
+          "fly ash": {
+            Density: 2.1,
+            Bounds:{
+              lower:[0],
+              upper:[0.2]
+            },
+            Type:"SCM"
+          },
+          "metakaolin": {
+            Density: 2.6,
+            Bounds:{
+              lower:[0],
+              upper:[0.2]
+            },
+            Type:"SCM"
           },
         }
       }

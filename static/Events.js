@@ -267,7 +267,9 @@ function showStep(stepIndex) {
     return;
   }
 
+  console.log(stepIndex)
   const step = steps[stepIndex];
+  console.log(step)
   const element = document.getElementById(step.elementId);
 
   if (element) {
