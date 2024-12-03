@@ -47,6 +47,28 @@ function register () {
         email : email,
         full_name : full_name,
         last_login : Date.now(),
+        template:{
+          particles:{
+            start:{
+              row:1,
+              column:0
+            },
+            end:{
+              row:101,
+              column:0
+            }
+          },
+          values:{
+            start:{
+              row:1,
+              column:1
+            },
+            end:{
+              row:101,
+              column:1
+            }
+          }
+        },
         materials: {
           Cement: {
             Density: 3.15
@@ -119,6 +141,14 @@ function register () {
   
   
   // Validate Functions
+
+  function validate_field(field) {
+    console.log(field)
+    if (field.length > 3)
+      return true
+    return false
+  }
+
   function validate_email(email) {
     expression = /^[^@]+@\w+(\.\w+)+\w$/
     if (expression.test(email) == true) {

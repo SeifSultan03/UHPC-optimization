@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        UHPC optimization
+    </title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="../static/spreadsheet.css">
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-left">
+          <a href="/main">Home</a>
+          <a href="/materials">My Materials</a>
+          <a href="/spreadsheet"class="selected">Spreadsheet Template</a>
+          <a href="/account">Account</a>
+      </div>
+      <div class="navbar-right">
+          <span class="account-name"></span>
+          <button class="logout-button" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <div id="stepOverlay"></div>
+
+    <div id="stepPopup" class="hidden">
+      <p id="stepText"></p>
+      <button id="nextStep">Next</button>
+    </div>
+
+    <div id="confirmTab">
+      <h2>Cells:</h2>
+      <h4 id="selectedInfoText">Select your cells</h4>
+      <button id="confirmButton" type="button">Confirm</button>
+    </div>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <h2 id="material-popup-title">Select your cells containing the particle diameters</h2>
+          <button id="close-btn" type="button">Got it!</button>
+      </div>
+    </div>
+
+    <form id="uploadForm">
+      <h1>Template Settings</h1>
+      <h3>-</h1>
+      <div id="buttonsContainer">
+        <button id="downloadTemplate" type="button">Download example template</button>
+        <button id="customTemplate" type="button">Use your own template</button>
+        <button id="revertTemplate" type="button">Reset to default</button>
+      </div>
+    </form>
+
+    <div class="editContainer">
+      <h1>Select your own template file</h1>
+      <input type="file" id="fileInput" accept=".xls, .xlsx"/>
+      <div id="sheetButtonContainer" class="hidden">
+        <h2>Select the Sheet</h2>
+        <div class="buttonContainer">
+          <!-- Buttons will be dynamically added here -->
+        </div>
+      </div>
+      <div id="tableContainer">
+        <table id="selectorTable">
+
+        </table>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://unpkg.com/read-excel-file@5.4.0/bundle/read-excel-file.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="../static/common.js"></script>
+    <script src="../static/spreadsheet.js"></script>
+</body>

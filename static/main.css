@@ -136,6 +136,25 @@ img {
   background-color: #288028 !important;
 }
 
+#exportButton {
+  background-color: #4CAF50;
+  color: white;
+  width: 100%;
+}
+
+#nextStep:hover{
+  background-color: #288028;
+}
+
+#nextStep {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#exportButton:hover{
+  background-color: #288028;
+}
+
 #fileContainer {
   display: flex;
   flex-wrap: wrap;
@@ -315,4 +334,41 @@ a.selected{
 
 #result-container{
   display: none;
+}
+
+#stepOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 10;
+}
+
+#stepPopup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.hidden {
+  display: none;
+}
+
+.highlightable {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.highlight {
+  position: relative;
+  z-index: 15;
+  background-color: yellow;
 }

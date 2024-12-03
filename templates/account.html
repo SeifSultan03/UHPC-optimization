@@ -7,18 +7,18 @@
     </title>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="../static/main.css">
-    <link rel="stylesheet" href="../static/materials.css">
+    <link rel="stylesheet" href="../static/account.css">
 </head>
 <body>
     <nav class="navbar">
       <div class="navbar-left">
           <a href="/main">Home</a>
           <a href="/materials">My Materials</a>
-          <a href="/spreadsheet">Spreadsheet Help</a>
+          <a href="/spreadsheet">Spreadsheet Template</a>
           <a href="/account" class="selected">Account</a>
       </div>
       <div class="navbar-right">
-          <span class="account-name">username</span>
+          <span class="account-name"></span>
           <button class="logout-button" onclick="logout()">Logout</button>
       </div>
     </nav>
@@ -26,29 +26,36 @@
     <div id="popup" class="popup">
       <div class="popup-content">
         <span class="close-btn" onclick="hidePopup()">&times;</span>
-        <h2 id="material-popup-title">Edit Material</h2>
-        <div class="input_container">
-          <b>Material Name: </b><input type="text" placeholder="Cement" value="" id="material-name-input">
-        </div>
-        <div class="input_container">
-          <b>Density (g/cm<sup>3</sup>): </b><input type="text" placeholder="2.55" value="" id="material-density-input">
-        </div>
+        <h2 id="material-popup-title">Updated Successfully!</h2>
         <div class="saver-container">
-          <button id="save-button" type="button">Save</button>
-          <button id="cancel-button" type="button" onclick="hidePopup()">Cancel</button>
+          <button id="reload-button" type="button" onclick="hidePopup()">Cancel</button>
         </div>
       </div>
     </div>
 
     <form id="uploadForm">
       <h1>Account Settings</h1>
-       
-      </form>
+      <div class="input_container">
+        <b>Full Name: </b><input type="text" placeholder="Enter new name" value="" id="material-name-input">
+      </div>
+      <div class="input_container">
+        <b>Email: </b><input type="text" placeholder="Enter new email" value="" id="material-density-input">
+      </div>
+      <div class="input_container">
+        <b>Old Password: </b><input type="password" placeholder="Enter old password" value="" id="password-input">
+      </div>
+      <div class="input_container">
+        <b>New Password: </b><input type="password" placeholder="Enter new password" value="" id="password-new-input">
+      </div>
+        <div class="saver-container">
+          <button id="save-button" type="button">Save Changes</button>
+        </div>
+    </form>
 
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src="../static/common.js"></script>
-    <script src="../static/materials.js"></script>
+    <script src="../static/account.js"></script>
 </body>

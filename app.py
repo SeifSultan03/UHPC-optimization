@@ -30,6 +30,15 @@ def materials_page():
 @app.route('/account')
 def account_page():
     return render_template('account.html')
+
+@app.route('/spreadsheet')
+def spreadsheet_page():
+    return render_template('spreadsheet.html')
+
+
+@app.route('/download-template')
+def download_template():
+    return redirect(url_for('static', filename='template.xlsx'))
     
 #create the upload folder
 UPLOAD_FOLDER = 'uploads/'
@@ -40,6 +49,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 @app.route('/getPSD', methods=['POST'])
 def get_psd():
+    userInfo = json.loads(request.form.get("user"))
     # make sure the filepart is there
     if 'file' not in request.files:
         response = jsonify({"error":"no file part"})
@@ -48,7 +58,7 @@ def get_psd():
 
     fileList = request.files.getlist('file')
     
-    # gaurd code
+    # guard code
     for file in fileList:
         # check if its an excel file
         if ".xls" not in file.filename: 
@@ -69,7 +79,7 @@ def get_psd():
         file.path = file_path
         file.save(file_path)
 
-    graphdata = create_psd(fileList)
+    graphdata = create_psd(fileList, userInfo)
 
     # delete the files from the filelist
     for file in fileList:
@@ -90,6 +100,8 @@ def get_psd():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    userInfo = json.loads(request.form.get("user"))
+    print(userInfo)
     # make sure the filepart is there
     if 'file' not in request.files:
         response = jsonify({"error":"no file part"})
@@ -118,7 +130,7 @@ def upload_file():
         file.path = file_path
         file.save(file_path)
 
-    graphdata = create_graph(fileList)
+    graphdata = create_graph(fileList, userInfo)
 
     # delete the files from the filelist
     for file in fileList:

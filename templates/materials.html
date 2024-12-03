@@ -14,14 +14,21 @@
       <div class="navbar-left">
           <a href="/main">Home</a>
           <a href="/materials" class="selected">My Materials</a>
-          <a href="/spreadsheet">Spreadsheet Help</a>
+          <a href="/spreadsheet">Spreadsheet Template</a>
           <a href="/account">Account</a>
       </div>
       <div class="navbar-right">
-          <span class="account-name">username</span>
+          <span class="account-name"></span>
           <button class="logout-button" onclick="logout()">Logout</button>
       </div>
     </nav>
+
+    <div id="stepOverlay"></div>
+
+    <div id="stepPopup" class="hidden">
+      <p id="stepText"></p>
+      <button id="nextStep">Next</button>
+    </div>
 
     <div id="popup" class="popup">
       <div class="popup-content">
@@ -32,6 +39,27 @@
         </div>
         <div class="input_container">
           <b>Density (g/cm<sup>3</sup>): </b><input type="text" placeholder="Enter Density" value="" id="material-density-input">
+        </div>
+        <div class="input_container">
+          <b>Type:</b>
+          <select id="material-type">
+            <option value="OPC">Cement</option>
+            <option value="SCM">Supplementary cementatious material</option>
+            <option value="FA">Aggregate</option>
+          </select>
+        </div>
+        <div class="input_container">
+          <b>Bounds*: </b>
+          <div>
+            <input type="text" placeholder="lower" value="" id="material-lower-bound-input">
+            <b> - </b><input type="text" placeholder="upper" value="" id="material-upper-bound-input">
+          </div>
+        </div>
+        <div class="unaligned">
+          * The recommended bounds for sand are 0 - 1. <a href="#" id="recommendBoundsLink">Use recommended bounds</a>
+        </div>
+        <div class="unaligned">
+          * Please note that bounds are in weight ratio comparison to Cement which is constantly 1.0
         </div>
         <div class="saver-container">
           <button id="save-button" type="button">Save</button>
@@ -46,25 +74,18 @@
           <template id="material-template">
             <div class="material-display">
               <img src="/static/material.png" class="materialPic">
-              <div class="materialData"><span class="file-name">Material: </span><span class="material-name">Concrete</span></div>
+              <div class="materialData"><span class="file-name">Material: </span><span class="material-name">Cement</span></div>
               <div class="materialData"><span class="file-name">Density: </span><span class="material-density">2.5</span> g/cm<sup>3</sup></div>
+              <div class="materialData"><span class="file-name">Bounds: </span><span class="material-bounds">none</span></div>
               <div class="editorContainer">
                 <button class="editButton" type="button">Edit</button>
                 <button class="deleteButton" type="button">Delete</button>
               </div>
             </div>
           </template>
-            <div class="material-display">
-              <img src="/static/material.png" class="materialPic">
-              <div class="materialData"><span class="file-name">Material: </span><span class="material-name">Concrete</span></div>
-              <div class="materialData"><span class="file-name">Density: </span><span class="material-density">2.5</span> g/cm<sup>3</sup></div>
-              <div class="editorContainer">
-                <button class="editButton" type="button">Edit</button>
-                <button class="deleteButton" type="button">Delete</button>
-              </div>
-            </div>
+            
           <template id="add-template">
-            <div class="file-display add-new">
+            <div class="material-display add-new" id="addContainer">
               <button id="addButton" type="button">+</button>
             </div>
           </template>

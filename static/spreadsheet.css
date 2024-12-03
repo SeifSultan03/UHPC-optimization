@@ -1,0 +1,211 @@
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: 'Montserrat',sans-serif;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  gap: 30px;
+  min-height: 100vh;
+}
+
+#uploadForm {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: max(800px, 80vw);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-left:8vw;
+}
+
+.editContainer {
+  flex: 1;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  min-width: max(800px, 81vw);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 500px;
+  margin-left:8vw;
+}
+
+#buttonsContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#revertTemplate{
+  background-color: #e74c3c;
+  color: white;
+}
+
+#buttonsContainer button {
+  color: white;
+  width: 100%;
+}
+
+#revertTemplate:hover{
+  background-color: #c0392b;
+}
+
+#customTemplate{
+  width: 80px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#customTemplate:hover{
+  background-color: #288028
+}
+
+#downloadTemplate{
+  width: 80px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#downloadTemplate:hover{
+  background-color: #288028
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+td:hover {
+  background-color: #cfe6ff;
+  cursor: pointer;
+}
+.selectedCell {
+  background-color: #8dc2ff;
+  border: solid #4CAF50;
+}
+
+.selectedCellFill {
+  background-color: #8dc2ff;
+}
+
+#confirmTab {
+  position: fixed;
+  display: none;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px 15px;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(199, 199, 199);
+  font-size: 16px;
+  border-radius: 5px;
+  z-index: 1000; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  position: relative;
+  width: 80%;
+  max-width: 500px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#close-btn {
+  margin-top: 30px;
+  width: 60%;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#confirmButton{
+  display: none;
+  width: 90%;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#confirmButton:hover{
+  background-color: #288028
+}
+
+.hidden {
+  display: none;
+}
+
+/* Style the sheet selector container */
+#sheetSelectorContainer {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Style the buttons */
+.sheetButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sheetButtons button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.sheetButtons button:hover {
+  background-color: #0056b3;
+}
+
+.sheetButton{
+  background-color: #4CAF50;
+  color: white;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.sheetButton:hover{
+  background-color: #288028
+}

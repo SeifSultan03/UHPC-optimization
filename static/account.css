@@ -83,10 +83,21 @@
   color: #333;
 }
 
+
+.inputs_container{
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 .input_container{
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  flex-direction: column;
+  margin-bottom: 2px;
+}
+.input_container input{
+  margin-top: 5px;
+  width: 200px;
 }
 
 #material-popup-title{
@@ -120,7 +131,7 @@
 }
 
 .saver-container button{
-  width: 48%;
+  width: 300px;
 }
 
 #save-button{
@@ -129,6 +140,15 @@
 }
 
 #save-button:hover{
+  background-color: #288028;
+}
+
+#reload-button{
+  background-color: #4CAF50;
+  color: white;
+}
+
+#reload-button:hover{
   background-color: #288028;
 }
 
@@ -165,4 +185,42 @@
 .unaligned{
   text-align: start;
   margin-bottom: 20px;
+}
+
+
+#stepOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 10;
+}
+
+#stepPopup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.hidden {
+  display: none;
+}
+
+.highlightable {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.highlight {
+  position: relative;
+  z-index: 15;
+  background-color: yellow;
 }
