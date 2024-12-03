@@ -171,7 +171,7 @@ document.getElementById('uploadButton').addEventListener('mousedown', function(e
 
   // Log files and send them to the server
   printFiles();
-  fetch('http://localhost:5000/upload', {
+  fetch('https://uhpc-optimization-997bd0e79934.herokuapp.com/upload', {
       method: 'POST',
       body: files,
     })
@@ -188,7 +188,7 @@ document.getElementById('uploadButton').addEventListener('mousedown', function(e
       document.getElementById('rmseData').innerHTML = data.rmseData;
 
       // Fetch additional image for PSD data
-      fetch('http://localhost:5000/getPSD', {
+      fetch('https://uhpc-optimization-997bd0e79934.herokuapp.com/getPSD', {
         method: 'POST',
         body: files,
       })
