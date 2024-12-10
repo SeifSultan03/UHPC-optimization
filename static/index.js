@@ -45,7 +45,7 @@ function register () {
       if (user) {
 
         const actionCodeSettings = {
-          url: 'http://127.0.0.1:5000/main', 
+          url: 'https://uhpc-optimization-997bd0e79934.herokuapp.com/main', 
           handleCodeInApp: true,
         };
 
