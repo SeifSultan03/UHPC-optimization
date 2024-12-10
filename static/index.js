@@ -22,7 +22,8 @@ auth.onAuthStateChanged(function(user) {
         console.log("okay, user is not authenticated or loading")
     }
 });
-  
+
+//protects against multiple clicks
 function register () {
     email = document.getElementById('email').value
     password = document.getElementById('password').value
@@ -41,96 +42,53 @@ function register () {
     .then(function() {
       isLoading = true;
       var user = auth.currentUser
-      var database_ref = database.ref()
+      if (user) {
+
+        const actionCodeSettings = {
+          url: 'http://127.0.0.1:5000/main', 
+          handleCodeInApp: true,
+        };
+
+        user.sendEmailVerification(actionCodeSettings)
+          .then(() => {
+            var database_ref = database.ref()
   
-      var user_data = {
-        email : email,
-        full_name : full_name,
-        last_login : Date.now(),
-        template:{
-          particles:{
-            start:{
-              row:1,
-              column:0
-            },
-            end:{
-              row:101,
-              column:0
-            }
-          },
-          values:{
-            start:{
-              row:1,
-              column:1
-            },
-            end:{
-              row:101,
-              column:1
-            }
-          }
-        },
-        sheet_name:"Sheet2",
-        tutorial_level:0,
-        materials: {
-          Cement: {
-            Density: 3.15,
-            Bounds:{
-              lower:[-1],
-              upper:[-1]
-            },
-            Type:"OPC"
-          },
-          Slag: {
-            Density: 2.85,
-            Bounds:{
-              lower:[0.2],
-              upper:[-1]
-            },
-            Type:"SCM"
-          },
-          Sand: {
-            Density: 2.6,
-            Bounds:{
-              lower:[1],
-              upper:[-1]
-            },
-            Type:"FA"
-          },
-          "Silica Fume": {
-            Density: 2.2,
-            Bounds:{
-              lower:[0],
-              upper:[0.2]
-            },
-            Type:"SCM"
-          },
-          "fly ash": {
-            Density: 2.1,
-            Bounds:{
-              lower:[0],
-              upper:[0.2]
-            },
-            Type:"SCM"
-          },
-          "metakaolin": {
-            Density: 2.6,
-            Bounds:{
-              lower:[0],
-              upper:[0.2]
-            },
-            Type:"SCM"
-          },
-        }
-      }
-  
-      // Push to Firebase Database
-      console.log(user.uid)
-      database_ref.child('users/' + user.uid).set(user_data)
-        .then(() =>{
-            alert('User Created!!')
-            window.location = '/main';
-            isLoading = false;
-        })
+            var user_data = {
+              email: email,
+              full_name: full_name,
+              last_login: Date.now(),
+              template: {
+                particles: { start: { row: 1, column: 0 }, end: { row: 101, column: 0 } },
+                values: { start: { row: 1, column: 1 }, end: { row: 101, column: 1 } }
+              },
+              sheet_name: "Sheet2",
+              tutorial_level: 0,
+              materials: {
+                Cement: { Density: 3.15, Bounds: { lower: [-1], upper: [-1] }, Type: "OPC" },
+                Slag: { Density: 2.85, Bounds: { lower: [0.2], upper: [-1] }, Type: "SCM" },
+                Sand: { Density: 2.6, Bounds: { lower: [1], upper: [-1] }, Type: "FA" },
+                "Silica Fume": { Density: 2.2, Bounds: { lower: [0], upper: [0.2] }, Type: "SCM" },
+                "fly ash": { Density: 2.1, Bounds: { lower: [0], upper: [0.2] }, Type: "SCM" },
+                metakaolin: { Density: 2.6, Bounds: { lower: [0], upper: [0.2] }, Type: "SCM" }
+              }
+            };
+        
+            // Push to Firebase Database
+            console.log(user.uid)
+            database_ref.child('users/' + user.uid).set(user_data)
+              .then(() =>{
+                  auth.signOut().then(() => {
+                    window.location = '/verify';
+                  }).catch((error) => {
+                    alert('An error occurred while logging out. Please try again.');
+                  });   
+                  isLoading = false;
+              })
+          })
+          .catch((error) => {
+            console.error("Error sending email:", error);
+          });
+      }    
     })
     .catch(function(error) {
       var error_code = error.code
@@ -140,6 +98,7 @@ function register () {
     })
   }
   
+  //protects against multiple clicks
   function login () {
     email = document.getElementById('email').value
     password = document.getElementById('password').value
@@ -161,7 +120,6 @@ function register () {
   
       database_ref.child('users/' + user.uid).update(user_data)
       .then(() =>{
-        alert('User logged in!!')
         window.location = '/main';
         isLoading = false;
       })

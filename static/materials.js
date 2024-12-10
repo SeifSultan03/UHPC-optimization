@@ -39,6 +39,7 @@ function createClone(materialName, materialData){
     Bounds.innerHTML = materialData.Bounds.lower+" - "+materialData.Bounds.upper
   }
 
+  // protects against multiple clicks
   // delete button logic, delete the material from the database then update the view
   clone.querySelector('.deleteButton').addEventListener('mousedown', function(event) {
     if (user != null) {
@@ -91,6 +92,7 @@ saveButton.addEventListener('mousedown',function(event) {
       }
   };
   
+  // protects against multiple clicks
   // update the database
   refToAdd.update(newMaterial)
   .then(() => {

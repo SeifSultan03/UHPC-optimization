@@ -1,21 +1,24 @@
 var user = null
 const saveButton = document.getElementById('save-button');
+const updatePasswordButton = document.getElementById('save-button-password')
 
 let fullName = document.getElementById("material-name-input")
 let email = document.getElementById("material-density-input")
+let oldPasswordInput = document.getElementById('password-old-input')
+let newPasswordInput = document.getElementById('password-new-input')
 
 saveButton.addEventListener('mousedown',function(event) {
-  let materialName = document.getElementById("material-name-input").value
-  let density = document.getElementById("material-density-input").value
+  let userName = document.getElementById("material-name-input").value
+  let userEmail = document.getElementById("material-density-input").value
 
   const refToAdd = database.ref("users/" + user.uid);
 
-  const newMaterial = {
-      ["email"]: density,
-      ["full_name"]:materialName
+  const newData = {
+      ["email"]: userEmail,
+      ["full_name"]:userName
   };
-  
-  refToAdd.update(newMaterial)
+
+  refToAdd.update(newData)
   .then(() => {
     console.log("Data updated successfully.");
     showPopup("Updated Succesfully")
@@ -24,6 +27,22 @@ saveButton.addEventListener('mousedown',function(event) {
     alert("Error updating data:", error);
   });
 });
+
+updatePasswordButton.addEventListener('mousedown', function(event){
+  const credential = firebase.auth.EmailAuthProvider.credential(user.email, oldPasswordInput.value);
+
+  user.reauthenticateWithCredential(credential).then(() => {
+  // Reauthentication successful, update the password
+    user.updatePassword(newPasswordInput.value).then(() => {
+      console.log("Password updated successfully.");
+      showPopup()
+    }).catch((error) => {
+      console.error("Error updating password:", error);
+    });
+  }).catch((error) => {
+    alert("Incorrect Password", error);
+  });
+})
 
 function populateDisplay(userMaterialsObject){
   console.log(userMaterialsObject.full_name)
@@ -51,3 +70,4 @@ function showPopup(text) {
 function hidePopup() {
   location.reload()
 }
+

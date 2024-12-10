@@ -99,6 +99,8 @@ function createClone(file, materialsObject) {
   fileContainer.appendChild(clone);
 }
 
+// protects against multiple clicks
+
 // add files button, adds the files to the display and form data (to be sents to backend)
 document.getElementById('addButton').addEventListener('mousedown', function(event) {
 
@@ -159,6 +161,8 @@ Array.from(document.getElementsByClassName('expand-button')).forEach(button => {
  * - Sets up an export button to generate a PDF with the returned data.
  * 
  */
+
+//protects against multiple clicks
 document.getElementById('uploadButton').addEventListener('mousedown', function(event) {
 
   // Check that each file has an assigned material
@@ -234,7 +238,18 @@ document.getElementById('uploadButton').addEventListener('mousedown', function(e
   }
 }); 
 
+const slider = document.getElementById("slider");
+const valueDisplay = document.getElementById("value");
 
+slider.addEventListener("input", function() {
+  const min = 0.2;
+  const max = 0.25;
+  const sliderValue = slider.value;  
+  valueDisplay.textContent = sliderValue
+  files.set("qVal", slider.value)
+});
+
+files.append("qVal", 0.23)
 // steps for the tutorial, all the logic is below
 // the steps logic works by having the user tutorial level and highlights the
 // element ID based on the step the user is on

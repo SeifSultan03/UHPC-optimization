@@ -35,11 +35,18 @@ def account_page():
 def spreadsheet_page():
     return render_template('spreadsheet.html')
 
+@app.route('/verify')
+def verifyEmail_page():
+    return render_template('verifyEmail.html')
 
 @app.route('/download-template')
 def download_template():
     return redirect(url_for('static', filename='template.xlsx'))
-    
+
+@app.route('/help')
+def help_page():
+    return render_template('help.html')
+
 #create the upload folder
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -57,7 +64,7 @@ def get_psd():
         return make_response(response, 400)
 
     fileList = request.files.getlist('file')
-    
+    qVal = request.form.get("qVal")
     # guard code
     for file in fileList:
         # check if its an excel file
@@ -79,7 +86,7 @@ def get_psd():
         file.path = file_path
         file.save(file_path)
 
-    graphdata = create_psd(fileList, userInfo)
+    graphdata = create_psd(fileList, userInfo, qVal)
 
     # delete the files from the filelist
     for file in fileList:
@@ -109,6 +116,7 @@ def upload_file():
         return make_response(response, 400)
 
     fileList = request.files.getlist('file')
+    qVal = request.form.get("qVal")
     
     for file in fileList:
         # check if its an excel file
@@ -130,7 +138,7 @@ def upload_file():
         file.path = file_path
         file.save(file_path)
 
-    graphdata = create_graph(fileList, userInfo)
+    graphdata = create_graph(fileList, userInfo, qVal)
 
     # delete the files from the filelist
     for file in fileList:

@@ -10,7 +10,7 @@ df = pd.read_excel(excel_file, sheet_name='Sheet2')
 d = df['Particle diameter'].values
 
 # function to create PSD graph
-def create_psd(file_list, userInfo):
+def create_psd(file_list, userInfo, qVal):
 
     plt.figure(figsize=(8, 6))
     
@@ -56,7 +56,7 @@ def create_psd(file_list, userInfo):
     plt.close()
     return {'img' : img}
 
-def create_graph(file_list, userInfo):
+def create_graph(file_list, userInfo, qVal):
     fileVolumes = {}
     userTemplate = userInfo["template"]
     userValuesStartColumn = userTemplate["values"]["start"]["column"]
@@ -87,7 +87,7 @@ def create_graph(file_list, userInfo):
     # assuming that all file lists have the same particle diameters get the diamaters:
     df = pd.read_excel(file_list[0], sheet_name=userSheetName,header=None)
     d =  df.iloc[userParticlesStartRow:userParticlesEndRow,userParticlesEndColumn].values
-    q = 0.25
+    q = float(qVal)
     min_d = d[0]
     max_d = d[d.size-1]
 
@@ -187,7 +187,7 @@ def create_graph(file_list, userInfo):
         alpha = (((d**q) - (min_d**q)) / ((max_d**q) - (min_d**q))) * 100
         return alpha
 
-    q = 0.25
+    q = float(qVal)
     min_d = d[0]
     max_d = d[d.size-1]
 

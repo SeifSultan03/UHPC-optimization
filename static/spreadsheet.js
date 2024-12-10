@@ -56,6 +56,7 @@ sheet_name:"Sheet2"
 }
 
 // Event listener to revert to the default template and update the database
+// protects against multiple clicks
 document.getElementById("revertTemplate").addEventListener("click", (event)=>{
 
   const refToUpdate = database.ref("users/" + user.uid);

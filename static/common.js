@@ -13,30 +13,37 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth()
 const database = firebase.database()
+
+// make sure that user is LOGGED IN and VERIFIED to allow them to the page else redirect to login page
+// populate user full_name in navbar
+let ignore = false
 auth.onAuthStateChanged(function(user) {
     if (user) {
       // User is authenticated
       var database_ref = database.ref("users/"+user.uid)
-      database_ref.once('value').then((snapshot) => {
-        const userData = snapshot.val();
-        console.log(username)
-        username.innerHTML = userData["full_name"]
-        console.log(userData["full"]);
-      });
-      var database_ref2 = database.ref("users/"+user.uid+"/materials")
-      database_ref2.once('value').then((snapshot) => {
-        console.log(snapshot.val())
-
-      });
+      if(user.emailVerified){
+        database_ref.once('value').then((snapshot) => {
+          const userData = snapshot.val();
+          console.log(username)
+          username.innerHTML = userData["full_name"]
+        });
+      } else {
+        ignore = true
+        logout(true)
+      }
     } else {
-      window.location = '/'; 
+      if (!ignore)
+        window.location = '/'; 
     }
   });
   
-  function logout(){
+  function logout(needVerify){
     auth.signOut().then(() => {
       console.log('User signed out');
-      window.location = '/';
+      if(needVerify)
+        window.location = '/verify'
+      else
+        window.location = '/';
     }).catch((error) => {
       console.error('Error signing out:', error);
       alert('An error occurred while logging out. Please try again.');

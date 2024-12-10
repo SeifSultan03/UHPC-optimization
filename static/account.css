@@ -143,6 +143,15 @@
   background-color: #288028;
 }
 
+#save-button-password{
+  background-color: #4CAF50;
+  color: white;
+}
+
+#save-button-password:hover{
+  background-color: #288028;
+}
+
 #reload-button{
   background-color: #4CAF50;
   color: white;

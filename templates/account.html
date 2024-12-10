@@ -16,6 +16,7 @@
           <a href="/materials">My Materials</a>
           <a href="/spreadsheet">Spreadsheet Template</a>
           <a href="/account" class="selected">Account</a>
+          <a href="/help">Help</a>
       </div>
       <div class="navbar-right">
           <span class="account-name"></span>
@@ -28,7 +29,7 @@
         <span class="close-btn" onclick="hidePopup()">&times;</span>
         <h2 id="material-popup-title">Updated Successfully!</h2>
         <div class="saver-container">
-          <button id="reload-button" type="button" onclick="hidePopup()">Cancel</button>
+          <button id="reload-button" type="button" onclick="hidePopup()">Close</button>
         </div>
       </div>
     </div>
@@ -41,15 +42,18 @@
       <div class="input_container">
         <b>Email: </b><input type="text" placeholder="Enter new email" value="" id="material-density-input">
       </div>
+      <div class="saver-container">
+        <button id="save-button" type="button">Save Changes</button>
+      </div>
       <div class="input_container">
-        <b>Old Password: </b><input type="password" placeholder="Enter old password" value="" id="password-input">
+        <b>Old Password: </b><input type="password" placeholder="Enter old password" value="" id="password-old-input">
       </div>
       <div class="input_container">
         <b>New Password: </b><input type="password" placeholder="Enter new password" value="" id="password-new-input">
       </div>
-        <div class="saver-container">
-          <button id="save-button" type="button">Save Changes</button>
-        </div>
+      <div class="saver-container">
+        <button id="save-button-password" type="button">Update Password</button>
+      </div>
     </form>
 
     </div>
